@@ -134,8 +134,7 @@
             :on-remove="handleRemove"
             :before-upload="beforeUploadVideo"
             limit="1"
-          >
-            <i class="el-icon-plus"></i>
+          ><i class="el-icon-plus"></i>
           </el-upload>
           <P class="text">请保证视频格式正确，且不超过20M</P>
         </el-form-item>
@@ -195,11 +194,6 @@ export default {
         deleted: 'danger'
       }
       return statusMap[status]
-    }
-  },
-  computed: {
-    bannerTypeObj() {
-      return groupBy(bannerType, 'key')
     }
   },
   data() {
@@ -264,6 +258,11 @@ export default {
         // 显示上传按钮
         isShowUploadVideo: false
       }
+    }
+  },
+  computed: {
+    bannerTypeObj() {
+      return groupBy(bannerType, 'key')
     }
   },
   created() {

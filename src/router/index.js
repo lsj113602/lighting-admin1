@@ -70,32 +70,8 @@ export const constantRoutes = [
           {
             path: 'banner1',
             component: () => import('@/views/pages/indexPage'),
-            name: '栏位1',
-            meta: { title: '栏位1' }
-          },
-          {
-            path: 'banner2',
-            component: () => import('@/views/pages/indexPage'),
-            name: '栏位2',
-            meta: { title: '栏位2' }
-          },
-          {
-            path: 'banner3',
-            component: () => import('@/views/pages/indexPage'),
-            name: '栏位3',
-            meta: { title: '栏位3' }
-          },
-          {
-            path: 'banner4',
-            component: () => import('@/views/pages/indexPage'),
-            name: '栏位4',
-            meta: { title: '栏位4' }
-          },
-          {
-            path: 'banner5',
-            component: () => import('@/views/pages/indexPage'),
-            name: '栏位5',
-            meta: { title: '栏位5' }
+            name: '首页管理',
+            meta: { title: '首页管理' }
           }
         ]
       },
@@ -108,7 +84,7 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/data',
+    path: '/dataManage',
     component: Layout,
     redirect: '/pages/index',
     name: 'Example',
@@ -117,7 +93,7 @@ export const constantRoutes = [
       {
         path: 'product',
         name: 'Index',
-        component: () => import('@/views/data/product'),
+        component: () => import('@/views/dataManage/product'),
         meta: { title: '商品管理', icon: 'table' }
       },
       {
