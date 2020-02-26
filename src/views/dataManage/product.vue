@@ -118,7 +118,7 @@
         </el-form-item>
         <el-form-item label="上传图片">
           <el-upload
-            action="http://localhost:8000/api/product/uploadProductImg"
+            action="http://134.175.218.206:8000/api/product/uploadProductImg"
             list-type="picture-card"
             name="productImg"
             :on-success="handleSuccess"
@@ -127,6 +127,7 @@
             :on-remove="handleRemove"
             :before-upload="beforeAvatarUpload"
             :limit="1"
+            :file-list="imageLogin"
           >
             <i class="el-icon-plus"></i>
           </el-upload>
@@ -136,7 +137,7 @@
         </el-form-item>
         <el-form-item label="图片列表">
           <el-upload
-            action="http://localhost:8000/api/product/uploadProductImg"
+            action="http://134.175.218.206:8000/api/product/uploadProductImg"
             list-type="picture-card"
             name="productImg"
             :on-success="handleDescSuccess"
@@ -145,6 +146,7 @@
             :on-remove="handleRemoveDesc"
             :before-upload="beforeAvatarUpload"
             :limit="5"
+            :file-list="imageDesc"
           >
             <i class="el-icon-plus"></i>
           </el-upload>
@@ -234,7 +236,19 @@
     computed: {
       bannerTypeObj() {
         return groupBy(bannerType, 'key')
-      }
+      },
+      imageLogin() {
+        if (this.dialogStatus==='create') {
+          return [];
+        }
+        return [{url: this.temp.logoImg}]
+      },
+      imageDesc() {
+        return this.temp.imgList.map(d => ({
+          ...d,
+          url: d,
+        }));
+      },
     },
     data() {
       return {
@@ -455,7 +469,8 @@
         this.temp.logoImg = '';
       },
       handleRemoveDesc(file, fileList) {
-        const url = file.response.url;
+        debugger
+        const url = file.url || file.response.url;
         const idx = this.temp.imgList.indexOf(url);
         this.temp.imgList.splice(idx, 1);
       },
